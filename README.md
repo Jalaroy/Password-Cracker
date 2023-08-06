@@ -16,4 +16,3 @@ I found it interesting to create something similar to Burp Suite Intruder, and i
 - [ ] Conduct a thorough analysis of the results.
 - [ ] Develop countermeasures to prevent brute-forcing attacks.
 
-*Note: Feel free to use proper headings, bullet points, and formatting in Markdown to make your project look more organized and visually appealing.*
