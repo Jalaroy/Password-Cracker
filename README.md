@@ -1,6 +1,6 @@
 # Password-Cracker
 
-This project consists currently of two Python codes. One is for cracking various hashes of a pin code, while the second involves bruteforcing a website.
+This project consists currently of two Python codes. One is for cracking hashes for a pin code(planing on passwords too), while the second involves bruteforcing a website. 
 
 ## Why
 
